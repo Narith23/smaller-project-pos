@@ -65,5 +65,18 @@ Route::group([
             $router->post(config('translation.ui_url').'/{language}/translations', 'LanguageTranslationController@store')
                 ->name('languages.translations.store');
         });
+
+        Route::group([
+            'namespace'  => 'App\Http\Controllers\Admin',
+        ], function($router){
+            Route::crud('position', 'PositionCrudController');
+            Route::crud('customer', 'CustomerCrudController');
+            Route::crud('employee', 'EmployeeCrudController');
+            Route::crud('address', 'AddressCrudController');
+            Route::crud('brand', 'BrandCrudController');
+            Route::crud('product', 'ProductCrudController');
+            Route::crud('order', 'OrderCrudController');
+            Route::crud('order-item', 'OrderItemCrudController');
+        });
     });
 });

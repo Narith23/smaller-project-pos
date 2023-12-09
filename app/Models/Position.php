@@ -4,13 +4,10 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Contracts\Auditable;
-use OwenIt\Auditing\Auditable as AuditableTrait;
 
-class Customer extends Model implements Auditable
+class Position extends Model
 {
     use CrudTrait;
-    use AuditableTrait;
 
     /*
     |--------------------------------------------------------------------------
@@ -18,19 +15,13 @@ class Customer extends Model implements Auditable
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'customers';
-    // protected $primaryKey = 'id';
+    protected $table = 'positions';
+    protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
     protected $fillable = [
-        "firstName",
-        "lastName",
-        "name",
-        "email",
-        "phone",
-        "birthdate",
-        "user_id",
-        "gender"
+        'name',
+        'is_active'
     ];
     // protected $hidden = [];
     // protected $dates = [];
@@ -46,10 +37,7 @@ class Customer extends Model implements Auditable
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

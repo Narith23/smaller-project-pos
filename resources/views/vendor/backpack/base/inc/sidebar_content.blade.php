@@ -15,6 +15,22 @@
     ],
     'permission' => 'pages'
 ])
+@include('partials.sidebar_link', [
+    'entry' => [
+        backpack_url('product'),
+        'Products',
+        'lab la-product-hunt'
+    ],
+    'permission' => ''
+])
+@include('partials.sidebar_link', [
+    'entry' => [
+        backpack_url('order'),
+        'Orders',
+        'la la-question'
+    ],
+    'permission' => ''
+])
 @include('partials.sidebar_dropdown', [
     'entry' => [
         'la la-newspaper-o',
@@ -29,14 +45,6 @@
                 'la la-newspaper-o'
             ],
             'permission' => 'articles'
-        ],
-        [
-            'entry' => [
-                backpack_url('category'),
-                'Categories',
-                'la la-list'
-            ],
-            'permission' => 'categories'
         ],
         [
             'entry' => [
@@ -62,6 +70,20 @@
                 'la la-user'
             ],
             'permission' => 'users'
+        ],
+        [
+            'entry' => [
+                backpack_url('customer'),
+                'Customers',
+                'las la-users'
+            ],
+        ],
+        [
+            'entry' => [
+                backpack_url('employee'),
+                'Employees',
+                'las la-users'
+            ],
         ],
         [
             'entry' => [
@@ -113,6 +135,37 @@
                 trans('backpack::crud.file_manager'),
                 'la la-files-o'
             ],
-        ]
+            ],
+            [
+            'entry' => [
+                backpack_url('position'),
+                'Positions',
+                'la la-key'
+            ],
+        ],
+        [
+            'entry' => [
+                backpack_url('address'),
+                'Addresses',
+                'las la-globe-americas'
+            ],
+        ],
+        [
+            'entry' => [
+                backpack_url('brand'),
+                'Brands',
+                'las la-copyright'
+            ],
+        ],
+        [
+            'entry' => [
+                backpack_url('category'),
+                'Categories',
+                'la la-list'
+            ],
+            'permission' => 'categories'
+        ],
     ]
 ])
+
+{{-- <li class='nav-item'><a class='nav-link' href='{{ backpack_url('order-item') }}'><i class='nav-icon la la-question'></i> Order items</a></li> --}}

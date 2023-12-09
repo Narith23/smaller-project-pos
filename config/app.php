@@ -175,7 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Victorybiz\GeoIPLocation\GeoIPLocationServiceProvider::class,
-
+        OwenIt\Auditing\AuditingServiceProvider::class,
     ],
 
     /*
