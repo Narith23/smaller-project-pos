@@ -46,6 +46,12 @@ class ProductCrudController extends CrudController
         CRUD::column('stock_quantity');
         CRUD::column('category_id');
         CRUD::column('brand_id');
+        CRUD::addColumn([
+            'name'    => 'product_image',
+            'label'   => 'Photos',
+            'type'    => 'upload_multiple',
+            'disk' => 'public'
+        ]);
         CRUD::column('created_at');
         CRUD::column('updated_at');
 

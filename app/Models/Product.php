@@ -47,6 +47,10 @@ class Product extends Model
     //     \Storage::disk('public_folder')->delete($obj->image);
     // });
 
+    protected $casts = [
+        'product_image' => 'array'
+    ];
+
     public function setThumbnailImgAttribute($value)
     {
         $attribute_name = "thumbnail_img";
@@ -96,6 +100,8 @@ class Product extends Model
 
         $this->uploadMultipleFilesToDisk($value, $attribute_name, $disk, $destination_path);
     }
+
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
