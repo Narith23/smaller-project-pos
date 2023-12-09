@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\PositionRequest;
+use App\Http\Requests\TypeRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class PositionCrudController
+ * Class TypeCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class PositionCrudController extends CrudController
+class TypeCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class PositionCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Position::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/position');
-        CRUD::setEntityNameStrings('position', 'positions');
+        CRUD::setModel(\App\Models\Type::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/type');
+        CRUD::setEntityNameStrings('type', 'types');
     }
 
     /**
@@ -39,12 +39,9 @@ class PositionCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('id');
-        CRUD::column('name');
-        CRUD::column('is_active');
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
 
+        CRUD::addColumn(['name' => 'name', 'label' => 'Name', 'type' => 'text']);
+        CRUD::addColumn(['name' => 'is_active','label' => 'Active', 'type' => 'number']);
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -60,13 +57,10 @@ class PositionCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(PositionRequest::class);
+        CRUD::setValidation(TypeRequest::class);
 
-        // CRUD::field('id');
-        CRUD::field('name');
+        CRUD::addField(['name' => 'name', 'label' => 'Name', 'type' => 'text']);
         CRUD::addField(['name' => 'is_active','label' => 'Active', 'type' => 'checkbox']);
-        // CRUD::field('created_at');
-        // CRUD::field('updated_at');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

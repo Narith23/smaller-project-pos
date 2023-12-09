@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->timestamp('order_date');
             $table->decimal('total_amount', 8, 2)->default(0.00);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

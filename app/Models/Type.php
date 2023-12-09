@@ -4,16 +4,12 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Contracts\Auditable;
-use OwenIt\Auditing\Auditable as AuditableTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-class Customer extends Model implements Auditable
+class Type extends Model
 {
-    use CrudTrait;
-    use AuditableTrait;
-    use SoftDeletes;
+    use CrudTrait, SoftDeletes;
 
     /*
     |--------------------------------------------------------------------------
@@ -21,19 +17,13 @@ class Customer extends Model implements Auditable
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'customers';
+    protected $table = 'type';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
     protected $fillable = [
-        "firstName",
-        "lastName",
         "name",
-        "email",
-        "phone",
-        "birthdate",
-        "user_id",
-        "gender"
+        "is_active"
     ];
     // protected $hidden = [];
     // protected $dates = [];
@@ -49,10 +39,7 @@ class Customer extends Model implements Auditable
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

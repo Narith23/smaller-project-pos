@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAddressOfCountryTable extends Migration
+class CreateTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateAddressOfCountryTable extends Migration
      */
     public function up()
     {
-        Schema::create('address_of_country', function (Blueprint $table) {
+        Schema::create('type', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->string("name_kh");
-            $table->string("parent_id");
+            $table->string('name');
+            $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +29,6 @@ class CreateAddressOfCountryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('address_of_country');
+        Schema::dropIfExists('type');
     }
 }

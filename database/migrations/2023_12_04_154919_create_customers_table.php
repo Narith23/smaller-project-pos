@@ -24,6 +24,7 @@ class CreateCustomersTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('gender')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

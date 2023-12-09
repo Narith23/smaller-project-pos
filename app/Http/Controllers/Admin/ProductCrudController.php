@@ -39,6 +39,7 @@ class ProductCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        CRUD::addColumn(['name' => 'thumbnail_img', 'type' => 'image', 'label' => 'thumbnail image','height' => '50px', 'width' => '50px',]);
         CRUD::column('name');
         CRUD::column('description');
         CRUD::column('price');
@@ -88,7 +89,7 @@ class ProductCrudController extends CrudController
         ]);
         CRUD::addField([
             // Select2
-            'label'     => "Position",
+            'label'     => "Brand",
             'type'      => 'select2',
             'name'      => 'brand_id', // the db column for the foreign key
 
@@ -102,6 +103,42 @@ class ProductCrudController extends CrudController
             'options'   => (function ($query) {
                  return $query->orderBy('id', 'ASC')->get();
              }), // force the related options to be a custom query, instead of all(); you can use this to filter the results show in the select
+        ]);
+
+        CRUD::addField([
+            // Select2
+            'label'     => "Type",
+            'type'      => 'select2',
+            'name'      => 'type_id', // the db column for the foreign key
+
+            // optional
+            'entity'    => 'type', // the method that defines the relationship in your Model
+            'model'     => "App\\Models\\Type", // foreign key model
+            'attribute' => 'name', // foreign key attribute that is shown to user
+            'default'   => 0, // set the default value of the select2
+
+            // also optional
+            'options'   => (function ($query) {
+                 return $query->orderBy('id', 'ASC')->where("is_active", true)->get();
+             }), // force the related options to be a custom query, instead of all(); you can use this to filter the results show in the select
+        ]);
+
+        CRUD::addField([
+            'label' => "Thumbnail Image",
+            'name' => "thumbnail_img",
+            'type' => 'image',
+            'crop' => true, // set to true to allow cropping, false to disable
+            'aspect_ratio' => 1,
+        ]);
+
+        CRUD::addField([
+            'name'      => 'product_image',
+            'label'     => 'Photos',
+            'type'      => 'upload_multiple',
+            'upload'    => true,
+            // 'disk'      => 'uploads\\images\\products', // if you store files in the /public folder, please omit this; if you store them in /storage or S3, please specify it;
+            // optional:
+            'temporary' => 5
         ]);
 
         /**

@@ -62,7 +62,7 @@ class BrandCrudController extends CrudController
         CRUD::setValidation(BrandRequest::class);
 
         CRUD::field('name');
-        CRUD::field('is_active');
+        CRUD::addField(['name' => 'is_active', 'type' => 'checkbox']);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

@@ -20,6 +20,7 @@ class CreateOrderItemsTable extends Migration
             $table->unsignedInteger('quantity');
             $table->decimal('sub_total', 8, 2);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

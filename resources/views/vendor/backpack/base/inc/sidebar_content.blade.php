@@ -163,9 +163,15 @@
                 'Categories',
                 'la la-list'
             ],
-            'permission' => 'categories'
+            'permission' => ''
+        ],
+        [
+            'entry' => [
+                backpack_url('type'),
+                'Types',
+                'la la-question'
+            ],
+            'permission' => ''
         ],
     ]
 ])
-
-{{-- <li class='nav-item'><a class='nav-link' href='{{ backpack_url('order-item') }}'><i class='nav-icon la la-question'></i> Order items</a></li> --}}

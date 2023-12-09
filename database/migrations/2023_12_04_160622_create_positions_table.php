@@ -18,6 +18,7 @@ class CreatePositionsTable extends Migration
             $table->string('name')->unique();
             $table->integer('is_active')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

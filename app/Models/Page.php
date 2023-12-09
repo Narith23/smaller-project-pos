@@ -7,12 +7,15 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
 use Str;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Page extends Model
 {
     use CrudTrait;
     use Sluggable;
     use SluggableScopeHelpers;
+    use SoftDeletes;
 
     /*
     |--------------------------------------------------------------------------

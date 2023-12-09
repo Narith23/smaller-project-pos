@@ -27,6 +27,7 @@ class CreateEmployeesTable extends Migration
             $table->float('lat', 8, 2)->nullable();
             $table->float('long', 8, 2)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

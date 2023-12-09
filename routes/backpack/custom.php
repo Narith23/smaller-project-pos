@@ -77,6 +77,7 @@ Route::group([
             Route::crud('product', 'ProductCrudController');
             Route::crud('order', 'OrderCrudController');
             Route::crud('order-item', 'OrderItemCrudController');
+            Route::crud('type', 'TypeCrudController');
         });
     });
 });
