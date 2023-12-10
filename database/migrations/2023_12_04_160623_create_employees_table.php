@@ -26,6 +26,7 @@ class CreateEmployeesTable extends Migration
             $table->string('gender')->nullable();
             $table->float('lat', 8, 2)->nullable();
             $table->float('long', 8, 2)->nullable();
+            $table->longText('employee_image')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

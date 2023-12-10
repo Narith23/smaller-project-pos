@@ -17,8 +17,8 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->longText('description')->nullable();
-            $table->decimal('price', 8, 2)->default(0.00);
-            $table->unsignedInteger('stock_quantity')->default(0);
+            $table->decimal('price', 8, 2)->nullable()->default(0.00);
+            $table->unsignedInteger('stock_quantity')->nullable()->default(0);
             $table->foreignId('category_id')->constrained('categories');
             $table->foreignId('brand_id')->constrained('brands');
             $table->longText('thumbnail_img')->nullable();

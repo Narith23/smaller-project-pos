@@ -40,6 +40,7 @@ class EmployeeCrudController extends CrudController
     protected function setupListOperation()
     {
         // CRUD::column('id');
+        CRUD::addColumn(['name' => 'employee_image', 'type' => 'image', 'label' => 'employee image','height' => '50px', 'width' => '50px',]);
         CRUD::column('user_id');
         CRUD::column('firstName');
         CRUD::column('lastName');
@@ -69,7 +70,6 @@ class EmployeeCrudController extends CrudController
     protected function setupCreateOperation()
     {
         CRUD::setValidation(EmployeeRequest::class);
-
 
         CRUD::field('firstName');
         CRUD::field('lastName');
@@ -128,6 +128,13 @@ class EmployeeCrudController extends CrudController
         ]);
         CRUD::field('lat');
         CRUD::field('long');
+        CRUD::addField([
+            'label' => "Image",
+            'name' => "employee_image",
+            'type' => 'image',
+            'crop' => true, // set to true to allow cropping, false to disable
+            'aspect_ratio' => 1,
+        ]);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

@@ -22,7 +22,8 @@ class CreateCustomersTable extends Migration
             $table->string('phone')->nullable();
             $table->date('birthdate')->default('2000-01-01'); // Set the default date
             $table->foreignId('user_id')->constrained();
-            $table->string('gender')->nullable();
+            $table->string('gender')->nullable()->default('M');
+            $table->longText('customer_image')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
