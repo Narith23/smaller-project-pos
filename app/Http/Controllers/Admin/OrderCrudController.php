@@ -63,12 +63,42 @@ class OrderCrudController extends CrudController
     {
         CRUD::setValidation(OrderRequest::class);
 
-        CRUD::field('customer_id');
-        CRUD::field('employee_id');
+        CRUD::addField([
+            // Select2
+            'label'     => "Customer",
+            'type'      => 'select2',
+            'name'      => 'customer_id', // the db column for the foreign key
+
+            // optional
+            'entity'    => 'customer', // the method that defines the relationship in your Model
+            'model'     => "App\\Models\\Customer", // foreign key model
+            'attribute' => 'name', // foreign key attribute that is shown to user
+            'default'   => 0, // set the default value of the select2
+
+            // also optional
+            'options'   => (function ($query) {
+                 return $query->orderBy('id', 'ASC')->get();
+             }), // force the related options to be a custom query, instead of all(); you can use this to filter the results show in the select
+        ]);
+        CRUD::addField([
+            // Select2
+            'label'     => "Employee",
+            'type'      => 'select2',
+            'name'      => 'employee_id', // the db column for the foreign key
+
+            // optional
+            'entity'    => 'employee', // the method that defines the relationship in your Model
+            'model'     => "App\\Models\\Employee", // foreign key model
+            'attribute' => 'name', // foreign key attribute that is shown to user
+            'default'   => 0, // set the default value of the select2
+
+            // also optional
+            'options'   => (function ($query) {
+                 return $query->orderBy('id', 'ASC')->get();
+             }), // force the related options to be a custom query, instead of all(); you can use this to filter the results show in the select
+        ]);
         CRUD::field('order_date');
-        CRUD::field('total_amount');
-        CRUD::field('created_at');
-        CRUD::field('updated_at');
+        CRUD::addField(['name' => 'total_amount', 'label' => 'Total Amount', 'type' => 'number']);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

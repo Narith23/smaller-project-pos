@@ -53,6 +53,10 @@ class Customer extends Model implements Auditable
     {
         return $this->belongsTo(User::class);
     }
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

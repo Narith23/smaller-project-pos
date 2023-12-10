@@ -97,7 +97,6 @@ class Product extends Model
         $attribute_name = "product_image";
         $disk = "public";
         $destination_path = "/uploads/images/products";
-
         $this->uploadMultipleFilesToDisk($value, $attribute_name, $disk, $destination_path);
     }
 
@@ -119,6 +118,10 @@ class Product extends Model
     public function type()
     {
         return $this->belongsTo(Type::class);
+    }
+    public function order_items()
+    {
+        return $this->hasMany(OrderItem::class);
     }
     /*
     |--------------------------------------------------------------------------

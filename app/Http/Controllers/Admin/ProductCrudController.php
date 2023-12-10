@@ -50,7 +50,7 @@ class ProductCrudController extends CrudController
             'name'    => 'product_image',
             'label'   => 'Photos',
             'type'    => 'upload_multiple',
-            'disk' => 'public'
+            // 'disk' => 'public'
         ]);
         CRUD::column('created_at');
         CRUD::column('updated_at');

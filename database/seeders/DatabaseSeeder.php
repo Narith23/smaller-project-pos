@@ -19,13 +19,23 @@ class DatabaseSeeder extends Seeder
         $admin = $roleModel::firstOrCreate(['id' => 2], ['name' => 'Admin']);
         $editor = $roleModel::firstOrCreate(['id' => 3], ['name' => 'Editor']);
         $user = $roleModel::firstOrCreate(['id' => 4], ['name' => 'User']);
+        $customer = $roleModel::firstOrCreate(['id' => 5], ['name' => 'Customer']);
+        $employee = $roleModel::firstOrCreate(['id' => 6], ['name' => 'Employee']);
 
         collect([
             'users',
             'articles',
             'tags',
             'categories',
-            'pages'
+            'pages',
+            'customer',
+            'employee',
+            'product',
+            'order',
+            'order_detail',
+            'position',
+            'brand',
+            'type',
         ])->each(function($v) use ($superAdmin, $admin, $editor, $user) {
             collect([
                 'list',

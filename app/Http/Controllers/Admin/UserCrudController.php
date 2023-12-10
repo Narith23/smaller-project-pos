@@ -31,6 +31,13 @@ class UserCrudController extends CrudController
         $this->crud->addButtonFromModelFunction('line', 'btnForceRestoreDelete', 'btnForceRestoreDelete', 'end');
         $this->crud->addColumns([
             [
+                'name' => 'avatar',
+                'type' => 'image',
+                'label' => 'Avatar',
+                'height' => '50px',
+                'width' => '50px',
+            ],
+            [
                 'name'  => 'name',
                 'label' => trans('backpack::permissionmanager.name'),
                 'type'  => 'text',
